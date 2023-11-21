@@ -19,18 +19,13 @@ def solution(expression):
         lst_tmp = split_ex.copy() 
         for o in str_o.split():
             for _ in range(lst_operator.count(o)):
-                print(lst_tmp)
                 for i, c in enumerate(lst_tmp): 
                     if c == o:
                         result = calc(lst_tmp[i-1], lst_tmp[i+1], c)
                         lst_tmp[i] = result
                         del lst_tmp[i-1], lst_tmp[i]
                         break
-                print(o)
-                print(lst_tmp)
-                print()
-                
-    
+                        
         if answer < abs(int(lst_tmp[0])):
             answer = abs(int(lst_tmp[0]))
                     
