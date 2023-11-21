@@ -11,7 +11,7 @@ def calc(n1, n2, operator):
 def solution(expression):
     answer = 0
     split_ex = re.split(r'([-+*])', expression)
-    lst_operand = [int(s) for s in split_ex if s.isdigit()]
+    lst_operator = [s for s in split_ex if not s.isdigit()]
     lst_o = ["+ - *", "+ * -", "- + *", "- * +", "* + -", "* - +"]
     
     for str_o in lst_o:
