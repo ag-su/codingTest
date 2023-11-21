@@ -8,7 +8,6 @@ def solution(s):
     for i, nums in enumerate(lst_s):
         set_nums = set(nums)
         
-        
         cur = set_nums - set_prev
         answer.append(list(cur)[0])
 
