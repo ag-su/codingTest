@@ -1,33 +1,18 @@
+def to_days(date):
+    year, month, day = list(map(int, date.split(".")))
+    return (year*12*28) + (month*28) + day
+    
+    
 def solution(today, terms, privacies):
-    answer = []
-    dic_terms = {t.split()[0]:int(t.split()[1])  for t in terms}
+    answer = [] 
     
-    for i, p in enumerate(privacies): 
-        term = p.split()[1] # 약관 
-        year, month, day = list(map(int, p.split()[0].split("."))) # 날짜 분리 
-        month = month + dic_terms[term] # 유효기간 계산 
-        day -= 1  
+    today = to_days(today) # 오늘 일 수
+    dic_terms = {t[0]:int(t[2:])*28 for t in terms} # 약관 딕셔너리
     
-        if month > 12:
-            if month%12 == 0:
-                year += month//12-1
-            else: 
-                year += month//12
-            month = month%12
-
-        if day == 0:
-            month -= 1
-            day = 28
-            if month == 1:
-                year -= 1   
-                
-        if month == 0:
-            month = 12 
+    for i, privacy in enumerate(privacies):
+        date, term = privacy.split() 
         
-        print(year, month, day)
-        
-        if today > f"{year}.{str(month).zfill(2)}.{str(day).zfill(2)}":
+        if to_days(date) + dic_terms[term] <= today:
             answer.append(i+1)
-            
 
     return answer
