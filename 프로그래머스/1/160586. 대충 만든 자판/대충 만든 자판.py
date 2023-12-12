@@ -6,9 +6,7 @@ def solution(keymap, targets):
             if (k in dic_cnt.keys()) and (i+1 >= dic_cnt[k]):
                  continue
             dic_cnt[k] = i+1 
-            
-    print(dic_cnt)
-    
+                
     answer = [0] * len(targets)
     for i, target in enumerate(targets):
         for t in target:
