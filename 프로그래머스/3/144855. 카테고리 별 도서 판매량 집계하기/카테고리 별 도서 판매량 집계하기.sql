@@ -1,0 +1,11 @@
+-- 코드를 입력하세요
+SELECT CATEGORY, SUM(SALES) AS TOTAL_SALES
+    FROM (SELECT BOOK_ID, SALES
+            FROM BOOK_SALES
+            WHERE MONTH(SALES_DATE)='01') A LEFT JOIN BOOK B
+                ON A.BOOK_ID = B.BOOK_ID 
+    GROUP BY 1
+    ORDER BY 1;
+    
+    
+    
