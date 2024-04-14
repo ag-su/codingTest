@@ -3,15 +3,6 @@
 -- CATEGORY, PRICE, PRODUCT_NAME
 -- 식품분류(CATEGORY)가 '과자', '국', '김치', '식용유'인 경우만 출력
 -- 정렬: 식품 가격 (PRICE) DESC 
-# SELECT CATEGORY, PRICE AS MAX_PRICE, PRODUCT_NAME
-#     FROM FOOD_PRODUCT 
-#     WHERE PRICE IN (SELECT CATEGORY, PRODUCT_NAME, MAX(PRICE)
-#                             FROM FOOD_PRODUCT
-#                             WHERE CATEGORY IN ('과자', '국', '김치', '식용유')
-#                             GROUP BY CATEGORY)
-#     ORDER BY 2 DESC; 
-    
-    
 WITH
 CATEGORY_MAX_PRICE AS (SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE
                             FROM FOOD_PRODUCT
