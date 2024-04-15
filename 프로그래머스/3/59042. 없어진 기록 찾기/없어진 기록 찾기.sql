@@ -10,4 +10,10 @@ SELECT ANIMAL_ID, NAME
     WHERE NOT EXISTS (SELECT 1 
                     FROM ANIMAL_INS I 
                     WHERE O.ANIMAL_ID = I.ANIMAL_ID)
-    ORDER BY 1 
+    ORDER BY 1;
+    
+SELECT ANIMAL_ID, NAME
+    FROM ANIMAL_OUTS
+    WHERE ANIMAL_ID NOT IN (SELECT ANIMAL_ID
+                                FROM ANIMAL_INS)
+    ORDER BY 1;
